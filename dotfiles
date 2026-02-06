@@ -1,0 +1,404 @@
+#!/usr/bin/env bash
+
+# Default configuration
+DOTFILES_DIR="${HOME}/.dotfiles"
+DOTFILES_REPO=""
+BACKUP_DIR="${HOME}/.dotfiles/backup"
+AUTO_COMMIT=false
+CONFIG_FILE="${XDG_CONFIG_HOME:-$HOME/.config}/dotfiles/config"
+
+readonly BOLD=$(tput bold)
+readonly RESET=$(tput sgr0)
+
+show_help() {
+  cat << EOF
+Usage: $(basename "$0") <command> [options]
+
+Commands:
+  help        Show this help message
+  init        Initialize the dotfiles management system in the user's home directory. Creates the configuration file if it does not exist, and clones the specified repository.
+              Usage: init [--repo <repository_url>] [--dir <dotfiles_directory>] [--auto-commit]
+              Options:
+                --repo <repository_url>       Specify the git repository URL to clone from (default: $DOTFILES_REPO)
+                --dir <dotfiles_directory>    Specify the directory to store dotfiles (default: $DOTFILES_DIR). If the repository is specified, this directory will be used as the target for cloning, otherwise the directory will be created if it does not exist.
+                --backup-dir <backup_directory> Specify the directory to store backups (default: $BACKUP_DIR)
+                --auto-commit                 Enable automatic committing of changes to the repository (default: $AUTO_COMMIT)
+  add         Add a file or directory to tracked as a package and linked in the dotfiles directory.
+              Usage: add <package> <file|directory>
+  use         Use a package by creating symlinks from the dotfiles directory to the home directory.
+              Usage: use <package>
+  remove      Remove a package from tracking. Removes symlinks created, but keeps files in the dotfiles directory.
+              Usage: remove <package>
+  restore     Restore original files by removing symlinks and copying dotfiles directory back to their original locations.
+              Usage: restore <package>
+  update      Update the dotfiles repository by pulling the latest changes from the remote repository.
+              Usage: update
+  list        List all tracked packages and their files.
+              Usage: list [package] [--files|-f]
+              Options:
+                --files, -f    Show files for each package
+EOF
+}
+
+validate_arg() {
+  local arg_name="$1"
+  local arg_value="$2"
+  local usage="$3"
+
+  if [[ -z "$arg_value" ]]; then
+    echo "Error: Missing required argument: $arg_name" >&2
+    echo "Usage: $usage" >&2
+    return 1
+  fi
+}
+
+validate_package_exists() {
+  local package="$1"
+
+  if [[ ! -d "$DOTFILES_DIR/$package" ]]; then
+    echo "Error: Package not found: $package" >&2
+    return 1
+  fi
+}
+
+ensure_dotfiles_dir() {
+  if [[ ! -d "$DOTFILES_DIR" ]]; then
+    echo "Error: Dotfiles directory not found: $DOTFILES_DIR" >&2
+    echo "Run '$(basename "$0") init' to initialize the dotfiles configuration." >&2
+    return 1
+  fi
+}
+
+normalize_path() {
+  local path="$1"
+  if [[ "$path" != /* ]]; then
+    echo "$HOME/$path"
+  else
+    echo "$path"
+  fi
+}
+
+get_relative_to_home() {
+  local path="$1"
+  echo "${path#$HOME/}"
+}
+
+load_config() {
+  if [[ -f "$CONFIG_FILE" ]]; then
+    # shellcheck source=/dev/null
+    source "$CONFIG_FILE"
+  fi
+}
+
+init() {
+  # Initialized from script defaults or loaded config file
+  local repo=""
+  local dir="${DOTFILES_DIR}"
+  local auto_commit="${AUTO_COMMIT}"
+  local backup_dir="${BACKUP_DIR}"
+  
+  while [[ $# -gt 0 ]]; do
+    case "$1" in
+      --repo)
+        repo="$2"
+        shift 2
+        ;;
+      --dir)
+        dir="$2"
+        shift 2
+        ;;
+      --backup-dir)
+        backup_dir="$2"
+        shift 2
+        ;;
+      --auto-commit)
+        auto_commit=true
+        shift
+        ;;
+      *)
+        echo "Unknown option: $1"
+        show_help
+        exit 1
+        ;;
+    esac
+  done
+
+  echo "Initializing..."
+  echo -e "\tRepository: $repo"
+  echo -e "\tDotfiles directory: $dir"
+  echo -e "\tBackup directory: $backup_dir"
+  echo -e "\tAuto commit: $auto_commit"
+  
+  # Create the config file if it doesn't exist
+  if [[ ! -f "$CONFIG_FILE" ]]; then
+    mkdir -p "$(dirname "$CONFIG_FILE")"
+    {
+      echo "DOTFILES_DIR=\"$dir\""
+      echo "DOTFILES_REPO=\"$repo\""
+      echo "BACKUP_DIR=\"$backup_dir\""
+      echo "AUTO_COMMIT=$auto_commit"
+    } > "$CONFIG_FILE"
+    echo "Configuration file created at $CONFIG_FILE"
+  else
+    echo "Configuration file already exists at $CONFIG_FILE. Skipping."
+  fi
+
+  # If the repo is set, try cloning, otherwise create the directory
+  if [[ -z "$repo" ]]; then
+    echo "Creating dotfiles directory: $dir"
+    mkdir -p "$dir"
+    echo "Creating backup directory: $backup_dir"
+    mkdir -p "$backup_dir"
+  else
+    echo "Cloning repository: $repo into $dir"
+    if [[ -d "$dir" ]]; then
+      echo "Directory $dir already exists. Skipping clone."
+    elif ! git clone "$repo" "$dir"; then
+      echo "Error: Clone failed" >&2
+      exit 1
+    fi
+  fi
+
+  echo "Initialization complete."
+}
+
+add() {
+  local package="$1"
+  local source="$2"
+  local relative_source="$source" # Store the original relative path
+
+  validate_arg "package" "$package" "add <package> <file|directory>" || return 1
+  validate_arg "source" "$source" "add <package> <file|directory>" || return 1
+  ensure_dotfiles_dir || return 1
+
+  # Normalize source path to absolute
+  source=$(normalize_path "$source")
+  relative_source=$(get_relative_to_home "$source")
+  local source_dir="$(dirname "$relative_source")"
+  echo "Creating package ${BOLD}$package${RESET} from '$source'"
+
+  # check if symlink already exists in the user's home directory
+  if [[ -L "$source" ]]; then
+    echo "Error: This package is already linked: '$source' and cannot be added again. Use ${BOLD}remove${RESET} to unlink it, or ${BOLD}restore${RESET} to restore the original files." >&2
+    return 1
+  fi
+
+  # Does the file or directory exist in the user's home directory?
+  if [[ ! -e "$source" ]]; then
+    echo "Error: File or directory does not exist in: '$source'" >&2
+    return 1
+  fi
+
+  # Does the file or directory exist in the dotfiles directory?
+  if [[ -d "$DOTFILES_DIR/$package" ]]; then
+    echo "Package directory already exists: '$DOTFILES_DIR/$package'. Contents of this package will be overwritten. Do you want to continue? (y/n)"
+    read -r response
+    case "${response,,}" in
+      y|yes)
+        ;;
+      *)
+        echo "No package has been added."
+        return 0
+        ;;
+    esac
+  fi
+
+  mkdir -p "$DOTFILES_DIR/$package/$source_dir"
+  mkdir -p "$BACKUP_DIR/$package/$source_dir"
+  
+  echo "Moving '$source' to '$DOTFILES_DIR/$package/$relative_source'"
+  if ! cp -r "$source" "$BACKUP_DIR/$package/$relative_source"; then
+    echo "Error: Failed to create backup" >&2
+    return 1
+  fi
+  if ! mv "$source" "$DOTFILES_DIR/$package/$relative_source"; then
+    echo "Error: Failed to move file(s) to '$DOTFILES_DIR/$package/$relative_source'" >&2
+    return 1
+  fi
+  
+  if stow -d "$DOTFILES_DIR" -t "$HOME" "$package"; then
+    echo "Package $package has been added and linked successfully."
+  else 
+    echo "Error: Stow failed" >&2
+    return 1
+  fi
+  
+
+  if [[ "$AUTO_COMMIT" == true ]]; then
+    if git -C "$DOTFILES_DIR" add "$package" && \
+       git -C "$DOTFILES_DIR" commit -m "Added package $package"; then
+      echo "Changes committed to repository."
+    else
+      echo "Warning: Failed to commit changes" >&2
+    fi
+  fi
+}
+
+use() {
+  local package="$1"
+  validate_arg "package" "$package" "use <package>" || return 1
+  ensure_dotfiles_dir || return 1
+  validate_package_exists "$package" || return 1
+
+  if stow -d "$DOTFILES_DIR" -t "$HOME" "$package"; then
+    echo "Package $package has been linked successfully."
+  else
+    echo "Error: Stow failed" >&2
+    return 1
+  fi
+  
+}
+
+update() {
+  if [[ -z "$DOTFILES_REPO" ]]; then
+    echo "No repository configured. Run the ${BOLD}init${RESET} command first with the ${BOLD}--repo${RESET} option or update $CONFIG_FILE." >&2
+    return 1
+  fi
+
+  echo "Updating dotfiles repository from $DOTFILES_REPO..."
+  if git -C "$DOTFILES_DIR" pull; then
+    echo "Dotfiles repository updated successfully."
+  else
+    echo "Error: Update failed" >&2
+    return 1
+  fi
+
+  
+}
+
+remove() { 
+  local package="$1"
+  validate_arg "package" "$package" "remove <package>" || return 1
+  ensure_dotfiles_dir || return 1
+  validate_package_exists "$package" || return 1
+
+  if stow -d "$DOTFILES_DIR" -t "$HOME" -D "$package"; then
+    echo "Package $package has been unlinked successfully."
+  else
+    echo "Error: Unstow failed" >&2
+    return 1
+  fi
+  
+}
+
+restore() {
+  local package="$1"
+  validate_arg "package" "$package" "restore <package>" || return 1
+  ensure_dotfiles_dir || return 1
+  validate_package_exists "$package" || return 1
+
+  if ! remove "$package"; then
+    echo "Error: Failed to remove package $package" >&2
+    return 1
+  fi
+
+  if ! cp -r "$DOTFILES_DIR/$package/." "$HOME/"; then
+    echo "Error: Failed to restore files from $package" >&2
+    return 1
+  fi
+
+  echo "Package $package has been restored successfully."
+}
+
+list() {
+  local package=""
+  local show_files=false
+  
+  while [[ $# -gt 0 ]]; do
+    case "$1" in
+      --files|-f)
+        show_files=true
+        shift
+        ;;
+      *)
+        package="$1"
+        shift
+        ;;
+    esac
+  done
+
+  ensure_dotfiles_dir || return 1
+
+  # Handle specified package
+  if [[ -n "$package" ]]; then
+    validate_package_exists "$package" || return 1
+    echo "Files for package $package:"
+    ls -1 "$DOTFILES_DIR/$package"
+    return 0
+  fi
+
+  # Handle --files flag
+  if $show_files; then
+    if compgen -G "$DOTFILES_DIR/*/" > /dev/null; then
+      for pkg_dir in "$DOTFILES_DIR"/*/; do
+        pkg_name=$(basename "$pkg_dir")
+        echo "Package: $pkg_name"
+        ls -1 "$pkg_dir"
+        echo ""
+      done
+    else
+      echo "No packages found."
+    fi
+    return 0
+  fi
+
+  # Default: list package names only
+  shopt -s nullglob
+  local pkg_dirs=("$DOTFILES_DIR"/*/)
+  shopt -u nullglob
+  
+  if [[ ${#pkg_dirs[@]} -eq 0 ]]; then
+    echo "No packages found."
+    return 0
+  fi
+  
+  for pkg_dir in "${pkg_dirs[@]}"; do
+    echo "$(basename "$pkg_dir")"
+  done
+}
+
+main() {
+  if [[ $# -lt 1 ]]; then
+    show_help
+    exit 1
+  fi
+
+  local subcommand="$1"
+  shift
+
+  case "$subcommand" in
+    help)
+      show_help
+      ;;
+    init)
+      init "$@"
+      ;;
+    add)
+      add "$@"
+      ;;
+    use)
+      use "$@"
+      ;;
+    update)
+      update "$@"
+      ;;
+    remove)
+      remove "$@"
+      ;;
+    restore)
+      restore "$@"
+      ;;
+    list)
+      list "$@"
+      ;;
+    *)
+      echo "Unknown command: $subcommand"
+      show_help
+      exit 1
+      ;;
+  esac
+}
+
+load_config
+
+main "$@"

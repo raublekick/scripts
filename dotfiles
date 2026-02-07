@@ -240,6 +240,25 @@ use() {
   ensure_dotfiles_dir || return 1
   validate_package_exists "$package" || return 1
 
+  # backup existing files before stowing
+  local package_dir="$DOTFILES_DIR/$package"
+  while IFS= read -r -d '' file; do
+    local relative_path="${file#$package_dir/}"
+    local target="$HOME/$relative_path"
+    if [[ -e "$target" && ! -L "$target" ]]; then
+      echo "Backing up existing file: $target to $BACKUP_DIR/$package/$relative_path"
+      mkdir -p "$(dirname "$BACKUP_DIR/$package/$relative_path")"
+      if ! cp -r "$target" "$BACKUP_DIR/$package/$relative_path"; then
+        echo "Error: Failed to backup existing file: $target" >&2
+        return 1
+      fi
+      if ! rm -rf "$target"; then
+        echo "Error: Failed to remove existing file: $target" >&2
+        return 1
+      fi
+    fi
+  done < <(find "$package_dir" -type f -print0)
+
   if stow -d "$DOTFILES_DIR" -t "$HOME" "$package"; then
     echo "Package $package has been linked successfully."
   else

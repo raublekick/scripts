@@ -1,0 +1,187 @@
+Type,Common Name,Scientific Name,January,February,March,April,May,June,July,August,September,October,November,December,Nativity,Availability,Notes
+Trees,catclaw acacia,Senegalia greggii,,,,TRUE,TRUE,TRUE,TRUE,TRUE,TRUE,TRUE,,,N,C,"BRDNST, HOST, MNSL"
+Trees,desert willow,Chilopsis linearis,,,,TRUE,TRUE,TRUE,TRUE,TRUE,TRUE,,,,N,C,"BRDNST, HUM, MNSL, HOST"
+Trees,false indigo tree,Amorpha fruticosa,,,,TRUE,TRUE,TRUE,,,,,,,N,NC,"SPCVAL, HOST,
+BRDNST, found in
+riparian areas greater
+than 2,000 feet"
+Trees,honey mesquite,Prosopis glandulosa,,,,,TRUE,TRUE,TRUE,TRUE,TRUE,,,,N,C,"BRDNST; SPCVAL,
+HOST"
+Trees,ironwood,Olynea tesota,,,,TRUE,TRUE,TRUE,,,,,,,N,C,"BRDNST, MNSL"
+Trees,palo verde,Parkinsonia sp.,,,TRUE,TRUE,TRUE,,,,,,,,N,C,"BRDNST, MNSL"
+Trees,screwbean mesquite,Prosopis pubescens,,,,,TRUE,TRUE,,,,,,,N,NC,"BRDNST, SPCVAL,
+MNSL"
+Trees,Sonoran kidneywood,Eysenhardtia orthocarpa,,,,,TRUE,TRUE,TRUE,TRUE,,,,,BIOREG,NC,BRDNST
+Trees,velvet mesquite,Prosopis velutina ,,,,,TRUE,TRUE,TRUE,TRUE,TRUE,,,,N,C,"SPCVAL, BRDNST,
+HOST, MNSL"
+Trees,whitethorn acacia,Vachellia constricta,,,,TRUE,TRUE,TRUE,TRUE,TRUE,,,,,N,C,BRDNST
+Shrubs,desert broom,Baccharis sarothroides,,,TRUE,TRUE,TRUE,TRUE,TRUE,TRUE,TRUE,,,,N,C,"SPCVAL, HOST; Much maligned
+but this native shrub is a major
+pollinator and wildlife plant. Buy
+a male plant if you want
+pollinators but not seedlings"
+Shrubs,American threefold,Trixis californica,,TRUE,TRUE,TRUE,TRUE,TRUE,TRUE,TRUE,TRUE,TRUE,TRUE,TRUE,N,NC,"Year round blooms with rainfall
+or supplemental water, MNSL"
+Shrubs,Arizona rosemallow,Hibiscus biseptus,,,TRUE,TRUE,TRUE,TRUE,TRUE,TRUE,TRUE,TRUE,TRUE,,N,NC,"BloomExt, MNSL, HOST"
+Shrubs,Baja fairy duster,Calliandra californica,TRUE,TRUE,TRUE,,,,,,,TRUE,TRUE,,BIOREG,C,"HUM, Year round blooms with
+rainfall or supplemental water"
+Shrubs,beebrush,Aloysia grattismus.,,,TRUE,TRUE,TRUE,TRUE,TRUE,TRUE,TRUE,TRUE,TRUE,,BIOREG,NC,HOST
+Shrubs,brittlebush,Encelia farinosa,,,TRUE,TRUE,TRUE,,,,,,,,N,C,"BloomExt, MNSL"
+Shrubs,brownplume wirelettuce,Stephanomeria pauciflora,,,,TRUE,TRUE,TRUE,TRUE,TRUE,TRUE,TRUE,,,N,NC,"SPCVAL, MNSL"
+Shrubs,bush dalea,Dalea pulchra,,TRUE,TRUE,TRUE,,,,,,,,,N,NC,"SPCVAL, HOST"
+Shrubs,California brickellbush,Brickellia californica,,,,,,,TRUE,TRUE,TRUE,TRUE,TRUE,TRUE,N,NC,
+Shrubs,chuparosa,Justicia californica,TRUE,TRUE,TRUE,TRUE,TRUE,TRUE,TRUE,TRUE,TRUE,TRUE,TRUE,TRUE,N,C,"HUM, HOST"
+Shrubs,Cleveland sage,Salvia clevelandii,,,,TRUE,TRUE,TRUE,TRUE,TRUE,,,,,BIOREG,C,SPCVAL
+Shrubs,Coulter’s brickelbush,Brickellia coulteri,,,TRUE,TRUE,TRUE,,,,TRUE,TRUE,TRUE,,N,NC,
+Shrubs,creosote,Larrea tridentata,,,TRUE,TRUE,TRUE,TRUE,TRUE,TRUE,TRUE,,,,N,C,"SPCVAL, HOST, MNSL"
+Shrubs,desert ceanothus,Ceanothus greggii,,,TRUE,TRUE,TRUE,,,,,,,,BIOREG,NC,"SPCVAL, HOST"
+Shrubs,desert globemallow,Sphaeralcea ambigua,TRUE,TRUE,TRUE,TRUE,TRUE,TRUE,TRUE,TRUE,TRUE,TRUE,TRUE,TRUE,N,C,"SPCVAL, HOST, MNSL"
+Shrubs,desert hackberry,Celtis pallida,,,TRUE,TRUE,TRUE,,,,,,,,N/A,N/A,"HOST, BRDNST"
+Shrubs,desert honeysuckle,Anisacanthus thurberi,,,,TRUE,TRUE,TRUE,,,,,,,N,C,"BloomExt, HUM, MNSL"
+Shrubs,desert lavender,Hyptis emoryi,TRUE,TRUE,TRUE,TRUE,TRUE,TRUE,TRUE,TRUE,TRUE,TRUE,TRUE,TRUE,N,C,SPCVAL
+Shrubs,desert rosemallow,Hibiscus coulteri,,,TRUE,TRUE,TRUE,TRUE,TRUE,TRUE,TRUE,TRUE,TRUE,,N,NC,"BloomExt, MNSL, HOST"
+Shrubs,desert senna,Senna covesii,,,,TRUE,TRUE,TRUE,TRUE,TRUE,TRUE,TRUE,,,N,C,"MNSL, HOST"
+Shrubs,Eastern Mojave buckwheat,"Erigonium fasiculatum
+poliofolium",,,TRUE,TRUE,TRUE,TRUE,,,,,,,N,NC,"SPCVAL, HOST, MNSL"
+Shrubs,feather dalea,Dalea formosa,,,,TRUE,TRUE,TRUE,TRUE,TRUE,,,,,BIOREG,C,"SPCVAL, HOST"
+Shrubs,flame honeysuckle,"Anisacanthus
+quadrifidus",,,,,,TRUE,TRUE,TRUE,TRUE,TRUE,TRUE,,BIOREG,C,"HUM, Year round blooms with
+rainfall or supplemental water"
+Shrubs,"Leucophyllums including
+Texas sage, violet
+silverleaf, Chihuahuan
+sage, Langman’s sage",Leucophyllum sp.,TRUE,TRUE,TRUE,TRUE,TRUE,TRUE,TRUE,TRUE,TRUE,TRUE,TRUE,TRUE,N,C,"HUM, HOST"
+Shrubs,odora,Porophyllum gracile,,,TRUE,TRUE,TRUE,TRUE,TRUE,TRUE,TRUE,TRUE,TRUE,,N,NC,"BloomExt, MNSL, HOST"
+Shrubs,"Oreganillo, Wright’s bee
+brush",Aloysia wrightii,,,,,,,,TRUE,TRUE,TRUE,,,N,N/A,
+Shrubs,paleface hibiscus,Hibiscus denudatus,,,,,TRUE,TRUE,TRUE,TRUE,TRUE,TRUE,TRUE,,N,NC,MNSL
+Shrubs,pelotazo,Abutilon incanum,,,TRUE,TRUE,TRUE,TRUE,TRUE,TRUE,TRUE,TRUE,,,N,NC,"MNSL, HOST"
+Shrubs,pink fairy duster,Calliandra eriophylla,,TRUE,TRUE,TRUE,TRUE,,,,,,,,N,C,"BloomExt. SPCVAL, MNSL,
+HUM"
+Shrubs,pink perezia/brownfoot,Acourtia wrightii,,,,,,TRUE,TRUE,TRUE,TRUE,TRUE,TRUE,,N,NC,MNSL
+Shrubs,rush (desert) milkweed,Asclepias subulata,,,,TRUE,TRUE,TRUE,TRUE,TRUE,TRUE,TRUE,,,N/A,C,"MNSL, HOST, SPCVAL"
+Shrubs,seep willow,Baccharis salicifolia,,,TRUE,TRUE,TRUE,TRUE,TRUE,TRUE,TRUE,TRUE,TRUE,,N,NC,"Can be propagated easily with
+pole cuttings"
+Shrubs,shrubby deervetch,Lotus rigidus,,TRUE,TRUE,TRUE,TRUE,,,,,,,,N,NC,SPCVAL
+Shrubs,spreading fleabane,Erigeron divergens,,TRUE,TRUE,TRUE,TRUE,TRUE,TRUE,TRUE,TRUE,TRUE,,,N,NC,MNSL
+Shrubs,sugar sumac,Rhus ovata,,,TRUE,TRUE,TRUE,,,,,,,,N,C,"SPCVAL, MNSL"
+Shrubs,Superstition mallow,Abutilon palmeri,,,TRUE,TRUE,TRUE,,,,,,,,N,C,"BloomExt, MNSL, HOST"
+Shrubs,sweetbush,Bebbia juncea,,,,TRUE,TRUE,TRUE,TRUE,,,,,,N,NC,"BloomExt, MNSL, HOST"
+Shrubs,turpentine bush,Ericameria laricifolia,,,,,,,,TRUE,TRUE,TRUE,TRUE,,N,C,"HOST, MNSL, critical late
+season nectar"
+Shrubs,wild petunia,Ruellia nudiflora,,,,TRUE,TRUE,TRUE,TRUE,TRUE,TRUE,TRUE,,,N/A,NC,"HOST, HUM"
+Shrubs,wolfberry,Lycium sp,TRUE,TRUE,TRUE,TRUE,,,,,,,,,N,C,"BloomExt. SPCVAL, BRDNST,
+HUM, early bloom critical for
+emerging bees"
+Shrubs,wooly butterfly bush,Buddleia marrubifolia,,,,,,TRUE,TRUE,TRUE,TRUE,TRUE,TRUE,,BIOREG,C,HUM
+Shrubs,Wright’s buckwheat,Eriogonum wrightii,,,,,,TRUE,TRUE,TRUE,TRUE,TRUE,,,N,NC,"SPCVAL, HOST"
+Perennials,Adonis blazing star,Mentzelia multiflora,,,TRUE,TRUE,TRUE,TRUE,TRUE,TRUE,TRUE,TRUE,,,N,NC,"SPCVAL, MNSL"
+Perennials,"antelope horns
+milkweed",Asclepias asperula,,,TRUE,TRUE,TRUE,TRUE,TRUE,TRUE,TRUE,TRUE,,,N,NC,"SPCVAL, HOST, native to
+the higher elevations of
+Maricopa County so will
+require additional wate"
+Perennials,Arizona milkweed,Asclepias angustifolia,,,TRUE,TRUE,TRUE,TRUE,TRUE,TRUE,,,,,N,NC,"BloomExt, HOST, POTS,
+In summer will need extra
+shade and water, best at
+elevations above 3,500
+feet, MNSL"
+Perennials,"bee balm,
+bergamot",Monarda sp.,,,,TRUE,TRUE,TRUE,TRUE,,,,,,BIOREG,C,SPCVAL
+Perennials,blackfoot daisy,"Melampodium
+leucantha",,,TRUE,TRUE,TRUE,,,,TRUE,TRUE,TRUE,,N,C,"BloomExt, high visitation
+by small native bees,
+MNSL"
+Perennials,blanketflower,Gaillardia sp.,TRUE,TRUE,TRUE,TRUE,TRUE,TRUE,TRUE,TRUE,TRUE,TRUE,TRUE,TRUE,BIOREG,C,"SPCVAL, MNSL, HOST"
+Perennials,chocolate flower,Berlandiera lyrata,,,,TRUE,TRUE,TRUE,TRUE,TRUE,TRUE,TRUE,,,BIOREG,C,"MNSL, chocolate scented
+flowers"
+Perennials,coneflowers,Rudbeckia sp,,,,,,TRUE,TRUE,TRUE,TRUE,TRUE,,,BIOREG,C,SPCVAL
+Perennials,desert marigold,Baileya multiradiata,,,TRUE,TRUE,TRUE,TRUE,TRUE,TRUE,TRUE,TRUE,TRUE,,N,C,"SPCVAL, MNSL"
+Perennials,desert zinnia,Zinnia acerosa,,,,TRUE,TRUE,TRUE,TRUE,TRUE,TRUE,TRUE,,,N,C,"SPCVAL, excellent for
+small native bees, MNSL"
+Perennials,"fall false tansy
+aster",Dieteria asteroides,,,,,,TRUE,TRUE,TRUE,TRUE,TRUE,TRUE,,N,NC,"POTS, MNSL"
+Perennials,Gregg’s mistflower,Conoclinium greggii,,,TRUE,TRUE,TRUE,TRUE,TRUE,TRUE,TRUE,TRUE,TRUE,,BIOREG,C,"Especially attractive to
+Queen butterflies, MNSL,
+HOST"
+Perennials,hollyhock,Alcea rosacea,,,,TRUE,TRUE,TRUE,,,,,,,Non native,C,"MNSL, HOST"
+Perennials,"hyssop,
+hummingbird mint",Agastache sp.,,,,,,TRUE,TRUE,TRUE,TRUE,TRUE,,,BIOREG,C,"Several species available,
+HUM"
+Perennials,"Mexican evening
+primrose",Oenothera speciosa,,TRUE,TRUE,TRUE,TRUE,TRUE,TRUE,,,,,,N,C,"SPCVAL, HUM"
+Perennials,Mohave milkweed,"Asclepias
+nyctaginafolia",,,,,TRUE,TRUE,TRUE,TRUE,,,,,N,NC,HOST
+Perennials,New Mexico thistle,"Cirsium
+neomexicanum",,,TRUE,TRUE,TRUE,TRUE,TRUE,,,,,,N,NC,"SPCVAL, MNSL, HUM"
+Perennials,parralena,"Thymophylla
+pentachaeta",,,TRUE,TRUE,TRUE,TRUE,TRUE,,,,,,N,NC,"BloomExt, POTS, MNSL"
+Perennials,"penstemons,
+beardtongues",Penstemon sp.,,TRUE,TRUE,TRUE,TRUE,TRUE,,,,,,,N,C,"Parry’s penstemon and
+firecracker penstemon are
+most readily available.
+SPCVAL, HUM, MNSL"
+Perennials,pineleaf milkweed,Asclepias linearis,,,,,TRUE,TRUE,TRUE,TRUE,TRUE,TRUE,TRUE,,N,C,HOST
+Perennials,Queen’s wreath,Antigonon leptopus,,,,,,TRUE,TRUE,TRUE,TRUE,TRUE,,,N/A,N/A,"Vine, POTS"
+Perennials,"rush/desert
+milkweed",Asclepias subulata,,,,TRUE,TRUE,TRUE,TRUE,TRUE,TRUE,TRUE,,,N,C,"SPCVAL, MNSL, HOST,
+POTS, BloomExt"
+Perennials,sacred datura,Datura wrightii,,,,,TRUE,TRUE,TRUE,TRUE,TRUE,TRUE,TRUE,,N,C,MNSL
+Perennials,"rattlesnake
+weed/whitemargin
+sandmat","Chamaesyce
+(Euphorbia)
+albomarginata",,,,TRUE,TRUE,TRUE,TRUE,TRUE,TRUE,TRUE,TRUE,,N,NC,"attracts Pertida bees
+(world’s smallest bees),
+often mistaken for a weed"
+Perennials,"smooth
+beggarticks",Bidens laevis,,,,,,TRUE,TRUE,TRUE,TRUE,TRUE,,,BIOREG,NC,SPCVAL
+Perennials,Snapdragon vine,"Maurandya
+antirrhiniflora",,,TRUE,TRUE,TRUE,TRUE,TRUE,TRUE,TRUE,TRUE,,,N,NC,"HUM, POTS, MNSL, vine"
+Perennials,stork’s bill,Erodium sp.,,,TRUE,TRUE,,,,,,,,,N,NC,"considered weedy but at
+least one species is native"
+Perennials,"southwestern
+mock vervain/
+verbena","Glandularia sp. or
+Verbena sp",,,,TRUE,TRUE,TRUE,,,,,,,N,C,"BloomExt, POTS, HOST,
+HUM"
+Perennials,tahoka daisy,"Machaeranthera
+tanacetifolia",,,TRUE,TRUE,TRUE,TRUE,TRUE,TRUE,TRUE,TRUE,,,N,NC,"POTS, MNSL"
+Perennials,tansy aster,Dieteria sp,,,TRUE,TRUE,TRUE,TRUE,TRUE,TRUE,TRUE,TRUE,,,N,NC,"MNSL, HOST, late season
+blooms"
+Perennials,"tufted evening
+primrose","Oenothera
+caespitosa",,,,TRUE,TRUE,TRUE,TRUE,TRUE,,,,,N,C,"SPCVAL, HOST, HUM"
+Cacti and Succulents,cholla,Cylindropuntia sp.,,,TRUE,TRUE,TRUE,TRUE,,,,,,,N,C,SPCVAL
+Cacti and Succulents,ocotillo,"Fouquieria
+splendens",,,TRUE,TRUE,TRUE,TRUE,TRUE,,,,,,N,C,"HUM, HOST"
+Cacti and Succulents,prickly pear,Opuntia sp.,,,,TRUE,TRUE,TRUE,TRUE,,,,,,N,C,"SPCVAL, supports many
+specialist cactus bees"
+Cacti and Succulents,red yucca,"Hesperaloe
+parviflora",,,TRUE,TRUE,TRUE,TRUE,TRUE,,,,,,BIOREG,C,HUM
+Cacti and Succulents,saguaro,Carnegiae gigantea,,,,,TRUE,TRUE,,,,,,,N,C,
+Cacti and Succulents,soaptree yucca,Yucca elata,,,,,TRUE,TRUE,TRUE,,,,,,N,C,"HOST, HUM, Pollinated by
+Yucca moths"
+Annuals,Arizona poppy,"Kallstroemia
+grandiflora",,,,,,,TRUE,TRUE,TRUE,,,,N,N/A,
+Annuals,"coreopsis, tickseed",Coreopsis sp,,,,TRUE,TRUE,TRUE,TRUE,TRUE,TRUE,,,,BIOREG,N/A,"In seed mixes or sold
+separately, MNSL"
+Annuals,cowpen daisy,"Verbesina
+encelioides",,,,TRUE,TRUE,TRUE,TRUE,TRUE,TRUE,TRUE,,,N,N/A,"SPCVAL, MNSL, HOST"
+Annuals,desert chia,Salvia columbariae,,,TRUE,TRUE,TRUE,,,,,,,,N,N/A,"SPCVAL, MNSL"
+Annuals,devil’s claw,"Proboscidea
+parviflora",,,,TRUE,TRUE,TRUE,TRUE,TRUE,TRUE,TRUE,,,N,N/A,MNSL
+Annuals,flatcrown buckwheat,Eriogonum deflexum,TRUE,TRUE,TRUE,TRUE,TRUE,TRUE,TRUE,TRUE,TRUE,TRUE,TRUE,TRUE,N,N/A,"often considered a weed but
+supports many species of
+small native bees, MNSL"
+Annuals,lupines,Lupinus sp.,,TRUE,TRUE,TRUE,,,,,,,,,N,N/A,"Usually sold in wildflower
+mixes. SPCVAL, HOST"
+Annuals,Mexican hats,Ratibida columnifera,,,,TRUE,TRUE,TRUE,TRUE,TRUE,TRUE,TRUE,TRUE,,BIOREG,N/A,"In seed mixes or sold
+separately SPCVAL"
+Annuals,poppies,Eschscholzia sp.,,TRUE,TRUE,TRUE,TRUE,,,,,,,,N,N/A,"California or Mexican
+varieties usually available in
+wildflower mixes, SPCVAL,
+MNSL, HOST"
+Annuals,scorpionweed,Phacelia sp.,,TRUE,TRUE,TRUE,TRUE,TRUE,,,,,,,N,N/A,"Several species available in
+wildflower mixes. SPCVAL"
+Annuals,sunflowers,Helianthus sp.,,,,,,TRUE,TRUE,TRUE,TRUE,TRUE,,,N,N/A,"SPCVAL, MNSL, HOST"

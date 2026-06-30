@@ -11,9 +11,15 @@ if len(sys.argv)==1:
     sys.exit(1)
 args = parser.parse_args()
 
+def convert_camel_case(string: str) -> str:
+    new_string = string.replace(' ', '')
+    first_letter = new_string[0].lower()
+    return first_letter + new_string[1:]
+
 data_rows = []
 with open(args.input_file, 'r') as f:
     data = csv.DictReader(f)
+    # set actual boolean or null values for boolean fields
     for row in data:
         for key in row.keys():
             match row[key].lower():
@@ -23,7 +29,8 @@ with open(args.input_file, 'r') as f:
                     row[key] = False
                 case "":
                     row[key] = None
-        data_rows.append(row)
+        jsonified = { convert_camel_case(k): v for k, v in row.items() }
+        data_rows.append(jsonified)
 
 # output new_rows as CSV to output file
 with open(args.output_file, 'w') as jsonfile:

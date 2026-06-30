@@ -53,6 +53,7 @@ with open(args.pollinator_file, 'r') as f:
     for index, row in enumerate(data):
         new_row = row
         new_row['Source'] = 'MCPP'
+        new_row['Pollinator'] = True
 
         host_match = find_host_match(row, host_rows)
         # if there is a match, set the host plant flag, weight, and host for
@@ -82,6 +83,7 @@ for index, host in enumerate(host_rows):
         new_row['Scientific Name'] = host['Scientific Name']
         new_row['Type'] = host['Type']
         new_row['Source'] = 'MCPPH'
+        new_row['Host Plant'] = True
         new_row['Host For'] = host['Host For']
         new_rows.append(new_row)
         print("Added host: ", new_row)
